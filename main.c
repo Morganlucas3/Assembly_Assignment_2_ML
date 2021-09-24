@@ -2,21 +2,21 @@
 // TODO: Your code
 
 #include <stdio.h>
-// add extern .asm
+
+extern long manager_assembly_function();
 
 int main() {
 
-printf("Welcome to Arrays of Integers\n");
-printf("Brought to you by Morgan Lucas\n");
+	printf("Welcome to Arrays of Integers\n");
+	printf("Brought to you by Morgan Lucas\n");
 
 
+	long returnValue = manager_assembly_function();
 
-// call the assembly program right here
 
-
-printf("Main received this number: %ld\n", //add number right here);
-printf("Main will return 0 to the operating system. Bye!\n");
-
+	printf("Main received this number: %ld\n", returnValue);
+	printf("Main will return 0 to the operating system. Bye!\n");
+	
 
 return 0;
 }
