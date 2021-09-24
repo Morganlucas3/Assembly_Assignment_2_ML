@@ -1,5 +1,20 @@
+;;;;;;;;;;;;;;;;;;;;;;;;
+;BEGIN THE DATA SECTION
+;;;;;;;;;;;;;;;;;;;;;;;;
+
+section .data
 
 
-; TODO: Your code
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;
+;BEGIN THE TEXT SECTION
+;;;;;;;;;;;;;;;;;;;;;;;;
+
+section .text
+
+global manager
+manager:
+
 
 
