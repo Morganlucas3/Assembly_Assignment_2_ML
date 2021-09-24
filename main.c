@@ -3,7 +3,7 @@
 
 #include <stdio.h>
 
-extern long manager_assembly_function();
+extern long manager();
 
 int main() {
 
@@ -11,7 +11,7 @@ int main() {
 	printf("Brought to you by Morgan Lucas\n");
 
 
-	long returnValue = manager_assembly_function();
+	long returnValue = manager();
 
 
 	printf("Main received this number: %ld\n", returnValue);
