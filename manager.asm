@@ -134,6 +134,7 @@ manager:
 
 	mov r14, 0			; r14 = current index, starting at 0 
 					; do this before loop so it only is set to 0 once
+					; counter
  manager_loop:
  
 ; "Enter the next integer: "
@@ -152,7 +153,8 @@ manager:
 	
 	
 ; right here need to say "if not valid user input, jmp to done"
-
+ 
+ 
 	
 
 
@@ -175,11 +177,11 @@ manager:
 	
 ; fill array with user input
 
-	mov r13, [ENTERED_INT]		; r13 = current value to write, filled with first user input
+	;mov r13, [ENTERED_INT]		; r13 = current value to write, filled with first user input
 
 ; adjust r13 and r14 so we can write to the next spot and our index increases
 	
-	mov [r12 + (r14 * 8)], r13	; mov r13 to next spot over where we can add the next user input
+	mov [r12 + (r14 * 8)], [ENTERED_INT]	; mov r13 to next spot over where we can add the next user input
 	
 	inc r14			; increase the index 
 
