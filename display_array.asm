@@ -34,7 +34,7 @@ push r15						; r15 = running pointer
 
 
 mov r15, r12						; r15 = r12 = running pointer = beginning of the array
-lea rbx, [r12 + (LOCAL_VARIABLE_COUNT * 8) - 1]	
+;lea rbx, [r12 + (LOCAL_VARIABLE_COUNT * 8) - 1]	
 
 
 
