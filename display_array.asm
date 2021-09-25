@@ -52,14 +52,7 @@ display_array_print_loop:
 	
 	;now we need to move the position of r15 and repeat
 	
-	inc r15
-	inc r15
-	inc r15
-	inc r15
-	inc r15
-	inc r15
-	inc r15
-	inc r15					; moves the running pointer 8 bytes to the next integer position
+	add r15, 8					; moves the running pointer 8 bytes to the next integer position
 	
 	jmp display_array_print_loop			; do it again 
 	
