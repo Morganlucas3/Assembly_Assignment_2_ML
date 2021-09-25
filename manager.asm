@@ -108,7 +108,7 @@ manager:
 ; pushing to the stack
 	
 	push rbp 		; rbp = base pointer
-	push rbx		; rbx = stopping point for the running pointer (ptr to last int on the stack)
+	push rbx		; rbx = ptr to last int on the stack
 	push r12		; r12 = pointer to the beginning of the array
 	push r13		; r13 = current value to write to 
 	push r14		; r14 = current index
@@ -154,12 +154,8 @@ manager:
 	
 ; right here need to say "if not valid user input, jmp to done"
  
- 	cmp -1, rax
- 	jg loop_done
  
-	
-
-
+ 
 
 	
 ; "You entered: "
@@ -187,7 +183,7 @@ manager:
 	
 	inc r14			; increase the index 
 
-; do it again, until user input is not valid
+; do it again, until user input is not valid 
 
 	jmp manager_loop			; jump to the beginning of loop:
 	
