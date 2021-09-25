@@ -148,6 +148,8 @@ manager:
 	
 ; right here need to say "if not valid user input, jmp to done"
  
+ 	cmp al, 0
+ 	je loop_done
  	
  
  
