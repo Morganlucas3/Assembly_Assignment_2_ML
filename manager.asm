@@ -61,12 +61,6 @@ THEIR_MEAN_IS_LEN	equ		$-THEIR_MEAN_IS
 RETURNED_MEAN		db		"The mean will now be returned to the main function.",13,10
 RETURNED_MEAN_LEN	equ		$-RETURNED_MEAN
 
-;;;;;;;;
-; new line 
-
-;CRLF			db		13,10
-;CRLF_LEN		equ		$-CRLF
-
 
 ;;;;;;;;;;;;;;;;;;;;;;;;
 ;BEGIN THE TEXT SECTION
@@ -170,7 +164,6 @@ manager:
 
 	mov rdi, [ENTERED_INT]
 	call libPuhfessorP_printSignedInteger64
-	;;call manager_crlf
 	
 	
 ; fill array with user input
@@ -241,8 +234,9 @@ manager:
 	
 ; this is the mount of numbers, probably has to do with r14 since im using that as a counter 
 
-
-
+	mov rdi, r14
+	call libPuhfessorP_printSignedInteger64
+	
 
 ; " total numbers and their mean is "
 
@@ -267,16 +261,7 @@ manager:
 	mov rdx, RETURNED_MEAN_LEN
 	syscall
 	
-;;;;;;
-;CRLF
 
- ;manager_crlf:
- 
- 	;mov rax, SYS_WRITE
-	;mov rdi, FD_STDOUT
-	;mov rsi, CRLF
-	;mov rdx, CRLF_LEN
-	;syscall	
 
 
 
