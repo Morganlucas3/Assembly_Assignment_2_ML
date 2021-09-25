@@ -8,7 +8,10 @@
 section .data
 
 
+;;;;;;;
+; Local variable for the array of integers 
 
+LOCAL_VARIABLE_COUNT		equ		100
 
 
 
