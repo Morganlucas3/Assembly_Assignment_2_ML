@@ -154,7 +154,7 @@ manager:
 	
 ; right here need to say "if not valid user input, jmp to done"
  
- 	cmp rax, -1
+ 	cmp -1, rax
  	jg loop_done
  
 	
