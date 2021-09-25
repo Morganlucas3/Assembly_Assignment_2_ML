@@ -177,11 +177,11 @@ manager:
 	
 ; fill array with user input
 
-	;mov r13, [ENTERED_INT]		; r13 = current value to write, filled with first user input
+	mov r13, [ENTERED_INT]		; r13 = current value to write, filled with first user input
 
 ; adjust r13 and r14 so we can write to the next spot and our index increases
 	
-	mov [r12 + (r14 * 8)], [ENTERED_INT]	; mov r13 to next spot over where we can add the next user input
+	mov [r12 + (r14 * 8)], r13	; filling array with the user input 
 	
 	inc r14			; increase the index 
 
@@ -202,9 +202,73 @@ manager:
 	mov rdx, YOURE_DONE_LEN
 	syscall
  
- 	
+ ;;;;;;;
+ ;"These numbers were received and placed into the array"
+ 
+	mov rax, SYS_WRITE			
+	mov rdi, FD_STDOUT			
+	mov rsi, NUMBERS_RECEIVED	
+	mov rdx, NUMBERS_RECEIVED_LEN
+	syscall
+	
+ ; this is where i need to call display_array.asm
+ 
+ 
+ 
+ 
+ ;;;;;;;;
+ ;"After the reverse function, these are the numbers of the array in their new order: "
+ 
+ 	mov rax, SYS_WRITE			
+	mov rdi, FD_STDOUT			
+	mov rsi, AFTER_REVERSE	
+	mov rdx, AFTER_REVERSE_LEN
+	syscall
+
+; this is where i need to call reverse.cpp
+
+
+
+
+;;;;;;;;;
+; mean
+
+;"You entered "
+
+	mov rax, SYS_WRITE			
+	mov rdi, FD_STDOUT			
+	mov rsi, TOTAL_ENTERED	
+	mov rdx, TOTAL_ENTERED_LEN
+	syscall
+	
+; this is the mount of numbers, probably has to do with r14 since im using that as a counter 
+
+
+
+
+; " total numbers and their mean is "
+
+	mov rax, SYS_WRITE			
+	mov rdi, FD_STDOUT			
+	mov rsi, THEIR_MEAN_IS	
+	mov rdx, THEIR_MEAN_IS_LEN
+	syscall
 	
 
+; heres where i need to calculate the mean 
+
+
+
+
+
+; "The mean will no be returned to the main function."
+
+	mov rax, SYS_WRITE			
+	mov rdi, FD_STDOUT			
+	mov rsi, RETURNED_MEAN
+	mov rdx, RETURNED_MEAN_LEN
+	syscall
+	
 ;;;;;;
 ;CRLF
 
