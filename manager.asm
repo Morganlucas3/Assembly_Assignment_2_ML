@@ -211,7 +211,7 @@ manager:
 	
  ; this is where i need to call display_array.asm
  
- 
+ 	call display_array
  
  
  ;;;;;;;;
