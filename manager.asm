@@ -148,12 +148,9 @@ manager:
 	
 ; right here need to say "if not valid user input, jmp to done"
  
- 	cmp al, 0
- 	jge loop_done
+ 	
  
  
-
-	
 ; "You entered: "
 
 	mov rax, SYS_WRITE			
