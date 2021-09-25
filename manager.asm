@@ -34,7 +34,7 @@ PROGRAM_INTRO_LEN	equ		$-PROGRAM_INTRO
 ENTER_SEQUENCE		db		"Enter a sequence of long integers separated by the enter key (one integer per line). Enter 'q' to quit.",13,10
 ENTER_SEQUENCE_LEN	equ		$-ENTER_SEQUENCE
 
-NEXT_INTEGER		db		,13,10"Enter the next integer: "
+NEXT_INTEGER		db		"Enter the next integer: "
 NEXT_INTEGER_LEN	equ		$-NEXT_INTEGER
 
 YOU_ENTERED		db		"You entered: "
