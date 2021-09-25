@@ -128,7 +128,7 @@ manager:
 
 	mov r14, 0			; r14 = current index, starting at 0 
 					; do this before loop so it only is set to 0 once
- loop:
+ manager_loop:
  
 ; "Enter the next integer: "
 
@@ -177,7 +177,7 @@ manager:
 
 ; do it again, until user input is not valid
 
-	jmp loop			; jump to the beginning of loop:
+	jmp manager_loop			; jump to the beginning of loop:
 	
 
 
