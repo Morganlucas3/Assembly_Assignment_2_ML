@@ -8,6 +8,8 @@
 section .data
 
 
+CRLF						db		13,10
+CRLF_LEN					equ		$-CRLF
 
 ;;;;;;;;;;;;;;;;;;;;;;;;
 ;BEGIN THE TEXT SECTION
@@ -22,6 +24,8 @@ extern manager
 
 global display_array
 display_array:
+
+
 
 push r15						; r15 = running pointer
 
@@ -42,6 +46,7 @@ display_array_print_loop:
 							; mov the value into rdi so we can print
 							
 	call libPuhfessorP_printSignedInteger64	; print the value 
+	call display_array_crlf
 	
 	;now we need to move the position of r15 and repeat
 	
@@ -60,10 +65,16 @@ display_array_done:
 	ret	
 
 
+display_array_crlf:
+	
+	mov rax, SYS_WRITE
+	mov rdi, FD_STDOUT
+	mov rsi, CRLF
+	mov rdx, CRLF_LEN
+	syscall
 
 
-
-
+	ret
 
 
 
