@@ -64,8 +64,8 @@ RETURNED_MEAN_LEN	equ		$-RETURNED_MEAN
 ;;;;;;;;
 ; new line 
 
-CRLF			db		13,10
-CRLF_LEN		equ		$-CRLF
+;CRLF			db		13,10
+;CRLF_LEN		equ		$-CRLF
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;
@@ -170,7 +170,7 @@ manager:
 
 	mov rdi, [ENTERED_INT]
 	call libPuhfessorP_printSignedInteger64
-	call manager_crlf
+	;;call manager_crlf
 	
 	
 ; fill array with user input
@@ -206,13 +206,13 @@ manager:
 ;;;;;;
 ;CRLF
 
- manager_crlf:
+ ;manager_crlf:
  
- 	mov rax, SYS_WRITE
-	mov rdi, FD_STDOUT
-	mov rsi, CRLF
-	mov rdx, CRLF_LEN
-	syscall	
+ 	;mov rax, SYS_WRITE
+	;mov rdi, FD_STDOUT
+	;mov rsi, CRLF
+	;mov rdx, CRLF_LEN
+	;syscall	
 
 
 
