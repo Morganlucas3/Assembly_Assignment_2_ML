@@ -17,9 +17,13 @@ FD_STDOUT			equ		1
 
 ;;;;;;;
 ; Local variable for the array of integers 
-; directions say the limit should be 100 so thats why I put 100
 
 LOCAL_VARIABLE_COUNT		equ		100
+
+;;;;;
+; Inputted integers
+
+ENTERED_INT		dq		0
 
 ;;;;;;;;
 ; Strings
@@ -64,6 +68,14 @@ RETURNED_MEAN_LEN	equ		$-RETURNED_MEAN
 
 section .text
 
+;;;;; Externals
+extern libPuhfessorP_printSignedInteger64
+extern libPuhfessorP_inputSignedInteger64
+extern main
+extern display_array
+extern reverse
+
+
 global manager
 manager:
 
@@ -92,6 +104,9 @@ manager:
 	push rbp 		; rbp = base pointer
 	push rbx		; rbx = stopping point for the running pointer (ptr to last int on the stack)
 	push r12		; r12 = pointer to the beginning of the array
+	push r13		; r13 = current value to write to 
+	push r14		; r14 = current index
+	
 	
 	mov rbp, rsp		; moves the stack pointer into the base pointer 
 				; base pointer = where the stack started
@@ -107,8 +122,80 @@ manager:
 	sub rsp, r10				; allocates our integers onto the stack by moving the stack pointer down
 	
 	mov r12, rsp				; r12 = pointer to the first int
-						
-						
+
+;;;;;;;;;
+; loop area 
+
+	mov r14, 0			; r14 = current index, starting at 0 
+					; do this before loop so it only is set to 0 once
+ loop:
+ 
+; "Enter the next integer: "
+
+	mov rax, SYS_WRITE			
+	mov rdi, FD_STDOUT			
+	mov rsi, NEXT_INTEGER	
+	mov rdx, NEXT_INTEGER_LEN
+	syscall
+			
+; User input (receiving an integer)
+
+	call libPuhfessorP_inputSignedInteger64
+	mov [ENTERED_INT], rax
+	mov rdi, [ENTERED_INT]
+	call libPuhfessorP_printSignedInteger64
+	
+; right here need to say "if not valid user input, jmp to done"
+
+	
+
+
+
+	
+; "You entered: "
+
+	mov rax, SYS_WRITE			
+	mov rdi, FD_STDOUT			
+	mov rsi, YOU_ENTERED	
+	mov rdx, YOU_ENTERED_LEN
+	syscall
+
+; print user input
+
+	mov rdi, [ENTERED_INT]
+	call libPuhfessorP_printSignedInteger64
+	
+; fill array with user input
+
+	mov r13, [ENTERED_INT]		; r13 = current value to write, filled with first user input
+
+; adjust r13 and r14 so we can write to the next spot and our index increases
+	
+	mov [r12 + (r14 * 8)], r13	; mov r13 to next spot over where we can add the next user input
+	
+	inc r14			; increase the index 
+
+; do it again, until user input is not valid
+
+	jmp loop			; jump to the beginning of loop:
+	
+
+
+ loop_done:
+
+ ; this is where the loop will end and move on when the user input is bad 
+ ; "You've entered nonsense. Assuming you are done!"
+ 
+ 	mov rax, SYS_WRITE			
+	mov rdi, FD_STDOUT			
+	mov rsi, YOURE_DONE	
+	mov rdx, YOURE_DONE_LEN
+	syscall
+ 
+ 	
+	
+
+	
 		
 
 
