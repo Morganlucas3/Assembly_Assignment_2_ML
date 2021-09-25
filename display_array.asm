@@ -8,12 +8,6 @@
 section .data
 
 
-;;;;;;;
-; Local variable for the array of integers 
-
-LOCAL_VARIABLE_COUNT		equ		100
-
-
 
 ;;;;;;;;;;;;;;;;;;;;;;;;
 ;BEGIN THE TEXT SECTION
@@ -29,12 +23,11 @@ extern manager
 global display_array
 display_array:
 
-push rbx						; rbx = ptr to last int on the stack
 push r15						; r15 = running pointer
 
 
 mov r15, r12						; r15 = r12 = running pointer = beginning of the array
-lea rbx, [r12 + (LOCAL_VARIABLE_COUNT * 8) - 1]	
+lea rbx, [r12 + (r14 * 8) - 1]	
 
 
 
@@ -61,7 +54,6 @@ display_array_done:
 
 	
 	pop r15
-	pop rbx
 	
 	mov rax, 0
 	
