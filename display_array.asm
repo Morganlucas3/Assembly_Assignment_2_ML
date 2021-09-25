@@ -8,6 +8,18 @@
 section .data
 
 
+;;;;;;;;
+; System calls
+
+SYS_WRITE			equ		1
+
+;;;;;;;;
+; File descriptors
+
+FD_STDIN			equ		0
+FD_STDOUT			equ		1
+
+;;; new line
 CRLF						db		13,10
 CRLF_LEN					equ		$-CRLF
 
