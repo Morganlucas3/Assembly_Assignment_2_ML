@@ -15,6 +15,12 @@ SYS_WRITE			equ		1
 FD_STDIN			equ		0
 FD_STDOUT			equ		1
 
+;;;;;;;
+; Local variable for the array of integers 
+; directions say the limit should be 100 so thats why I put 100
+
+LOCAL_VARIABLE_COUNT		equ		100
+
 ;;;;;;;;
 ; Strings
 
@@ -77,6 +83,50 @@ manager:
 	mov rsi, ENTER_SEQUENCE
 	mov rdx, ENTER_SEQUENCE_LEN
 	syscall
+	
+;;;;;;;;
+; allocates an array of integers as a local variable (on the stack)
+
+; pushing to the stack
+	
+	push rbp 		; rbp = base pointer
+	push rbx		; rbx = stopping point for the running pointer (ptr to last int on the stack)
+	push r12		; r12 = pointer to the beginning of the array
+	
+	mov rbp, rsp		; moves the stack pointer into the base pointer 
+				; base pointer = where the stack started
+				
+	mov r10, LOCAL_VARIABLE_COUNT 	; r10 = temp register
+						; dont need to push/pop because its not callee saved	
+						; moves the integer count into r10
+						; r10 = n_integers 
+						
+	imul r10, 8				; each 64 bit integer = 8 bytes 
+						; r10 = n_integers * 8 = how many bytes we need for our integers
+						
+	sub rsp, r10				; allocates our integers onto the stack by moving the stack pointer down
+	
+	mov r12, rsp				; r12 = pointer to the first int
+						
+						
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
