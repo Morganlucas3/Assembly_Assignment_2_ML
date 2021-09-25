@@ -143,7 +143,7 @@ manager:
 	call libPuhfessorP_inputSignedInteger64
 	mov [ENTERED_INT], rax
 	mov rdi, [ENTERED_INT]
-	call libPuhfessorP_printSignedInteger64
+	
 	
 ; right here need to say "if not valid user input, jmp to done"
 
