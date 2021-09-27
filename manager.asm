@@ -176,6 +176,15 @@ manager:
 	mov [r12 + (r14 * 8)], r13	; filling array with the user input 
 	
 	inc r14			; increase the index 
+	
+;add user input for later use (calculating the mean)
+
+	mov r11, 0		; r11 = temp register 
+				; r11 = 0
+				
+	add r11, [ENTERED_INT]	; r11 = 0 + user input
+	
+
 
 ; do it again, until user input is not valid 
 
@@ -248,9 +257,19 @@ manager:
 	syscall
 	
 
-; heres where i need to calculate the mean 
+; heres where i need to calculate the mean
 
+	 mov rax, r11 		; load numerator into rax
+	 			; r11 = sum of user input = numerator
+	 cqo 			; convert rax to rdx:rax
+	 
+	 idiv r14		; divide rdx:rax by r14
+	 
+	 mov rdi, rax		; moves actual integer into rdi
+	 call libPuhfessorP_printSignedInteger64 ; prints integer
+	 
 
+	
 
 
 
@@ -265,7 +284,9 @@ manager:
 
 
 
-
+	mov rax, r14			;moves r14 (counter) into rax to return to the main.c program
+	
+	ret
 
 
 
