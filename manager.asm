@@ -259,15 +259,19 @@ manager:
 
 ; heres where i need to calculate the mean
 
-	 mov rax, r15		; load numerator into rax
+	mov rdi, r15
+	call libPuhfessorP_printSignedInteger64
+
+	; mov rax, r15		; load numerator into rax
 	 			; r11 = sum of user input = numerator
+	 			
 	 
-	 cqo 			; convert rax to rdx:rax
+	 ;cqo 			; convert rax to rdx:rax
 	 
-	 idiv r14		; divide rdx:rax by r14
+	 ;idiv r14		; divide rdx:rax by r14
 	 
-	 mov rdi, rax		; moves actual integer into rdi
-	 call libPuhfessorP_printSignedInteger64 ; prints integer
+	 ;mov rdi, rax		; moves actual integer into rdi
+	 ;call libPuhfessorP_printSignedInteger64 ; prints integer
 	 
 
 	
