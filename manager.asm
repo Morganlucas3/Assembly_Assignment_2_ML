@@ -261,6 +261,9 @@ manager:
 
 	 mov rax, r11 		; load numerator into rax
 	 			; r11 = sum of user input = numerator
+	 mov rdi, r11
+	 call libPuhfessorP_printSignedInteger64
+	 
 	 cqo 			; convert rax to rdx:rax
 	 
 	 idiv r14		; divide rdx:rax by r14
