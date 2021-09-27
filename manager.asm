@@ -179,7 +179,7 @@ manager:
 	
 ;add user input for later use (calculating the mean)
 
-	mov r11, 0		; r11 = temp register 
+	;mov r11, 0		; r11 = temp register 
 				; r11 = 0
 				
 	add r11, [ENTERED_INT]	; r11 = 0 + user input
