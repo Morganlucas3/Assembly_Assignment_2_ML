@@ -106,6 +106,7 @@ manager:
 	push r12		; r12 = pointer to the beginning of the array
 	push r13		; r13 = current value to write to 
 	push r14		; r14 = current index
+	push r15 
 	
 	
 	mov rbp, rsp		; moves the stack pointer into the base pointer 
@@ -179,10 +180,9 @@ manager:
 	
 ;add user input for later use (calculating the mean)
 
-	mov r11, 0		; r11 = temp register 
-				; r11 = 0
+	mov r15, 0	 ; r15 = 0
 				
-	add r11, [ENTERED_INT]	; r11 = 0 + user input
+	add r15, [ENTERED_INT]	; r15 = 0 + user input
 	
 
 
@@ -259,7 +259,7 @@ manager:
 
 ; heres where i need to calculate the mean
 
-	 mov rax, r11 		; load numerator into rax
+	 mov rax, r15		; load numerator into rax
 	 			; r11 = sum of user input = numerator
 	 
 	 cqo 			; convert rax to rdx:rax
@@ -284,6 +284,7 @@ manager:
 	
 	
 	mov rsp, rbp
+	pop r15
 	pop r14
 	pop r13
 	pop r12
