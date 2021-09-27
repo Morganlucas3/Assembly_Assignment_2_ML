@@ -227,15 +227,15 @@ manager:
 	syscall
 
 ; this is where i need to call reverse.cpp
-	push r14
-	push r12
+	;push r14
+	;push r12
 	mov rsi, r14
 	mov rdi, r12
 	call reverse
-	pop r12
-	pop r14
-	
 	call display_array
+	;pop r12
+	;pop r14
+	
 ;;;;;;;;;
 ; mean
 
