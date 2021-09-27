@@ -232,10 +232,10 @@ manager:
 	mov rsi, r14
 	mov rdi, r12
 	call reverse
-	call display_array
 	pop r12
 	pop r14
-
+	
+	call display_array
 ;;;;;;;;;
 ; mean
 
