@@ -20,19 +20,19 @@ void reverse(signed long* a, long b){
 	for(int i = 0; i < b; i++){
 	temp = *a;
 	v.push_back(temp);
-	*a++;
+	a++;
 	}
 		
 	reverse(v.begin(), v.end());
 	
 
-	for(int i = 0; i < b; i--){
-	*a--;
+	for(int i = 0; i < b; i++){
+	a--;
 	}
 	
 	for (long i: v){
 	*a = i;
-	*a++;
+	a++;
 	}
 
 }
