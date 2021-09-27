@@ -17,31 +17,22 @@ void reverse(signed long* a, long b){
 	//make a long variable call it temp
 	long temp;
 	
-	//make a for loop (int i = 0; i < b; i++) {
-	//temp = ptr
-	//vector.push_back(temp)
-	// ptr++
-	//}
-	
 	for(int i = 0; i < b; i++){
 	temp = *a;
 	v.push_back(temp);
-	a++;
+	*a++;
 	}
 		
 	reverse(v.begin(), v.end());
 	
-	//for loop to move ptr (int i = 0; i < b; i--){
-	//ptr--
-	//}
 
 	for(int i = 0; i < b; i--){
-	a--;
+	*a--;
 	}
 	
 	for (long i: v){
 	*a = i;
-	a++;
+	*a++;
 	}
 
 }
