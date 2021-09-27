@@ -180,7 +180,6 @@ manager:
 	
 ;add user input for later use (calculating the mean)
 
-	mov r15, 0	 ; r15 = 0
 				
 	add r15, [ENTERED_INT]	; r15 = 0 + user input
 	
@@ -214,6 +213,7 @@ manager:
 	
  ; this is where i need to call display_array.asm
  
+ 
  	call display_array
  
  
@@ -227,9 +227,10 @@ manager:
 	syscall
 
 ; this is where i need to call reverse.cpp
-
-
-
+	
+	mov rsi, r14
+	mov rdi, r12
+	call reverse
 
 ;;;;;;;;;
 ; mean
@@ -259,19 +260,17 @@ manager:
 
 ; heres where i need to calculate the mean
 
-	mov rdi, r15
-	call libPuhfessorP_printSignedInteger64
 
-	; mov rax, r15		; load numerator into rax
+	mov rax, r15		; load numerator into rax
 	 			; r11 = sum of user input = numerator
 	 			
 	 
-	 ;cqo 			; convert rax to rdx:rax
+	cqo 			; convert rax to rdx:rax
 	 
-	 ;idiv r14		; divide rdx:rax by r14
+	idiv r14		; divide rdx:rax by r14
 	 
-	 ;mov rdi, rax		; moves actual integer into rdi
-	 ;call libPuhfessorP_printSignedInteger64 ; prints integer
+	mov rdi, rax		; moves actual integer into rdi
+	call libPuhfessorP_printSignedInteger64 ; prints integer
 	 
 
 	
