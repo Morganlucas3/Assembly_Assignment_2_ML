@@ -179,7 +179,7 @@ manager:
 	
 ;add user input for later use (calculating the mean)
 
-	;mov r11, 0		; r11 = temp register 
+	mov r11, 0		; r11 = temp register 
 				; r11 = 0
 				
 	add r11, [ENTERED_INT]	; r11 = 0 + user input
@@ -261,15 +261,13 @@ manager:
 
 	 mov rax, r11 		; load numerator into rax
 	 			; r11 = sum of user input = numerator
-	 mov rdi, r11
-	 call libPuhfessorP_printSignedInteger64
 	 
-	 ;cqo 			; convert rax to rdx:rax
+	 cqo 			; convert rax to rdx:rax
 	 
-	 ;idiv r14		; divide rdx:rax by r14
+	 idiv r14		; divide rdx:rax by r14
 	 
-	 ;mov rdi, rax		; moves actual integer into rdi
-	 ;call libPuhfessorP_printSignedInteger64 ; prints integer
+	 mov rdi, rax		; moves actual integer into rdi
+	 call libPuhfessorP_printSignedInteger64 ; prints integer
 	 
 
 	
@@ -284,8 +282,14 @@ manager:
 	mov rdx, RETURNED_MEAN_LEN
 	syscall
 	
-
-
+	
+	mov rbp, rsp
+	pop r14
+	pop r13
+	pop r12
+	pop rbx
+	pop rbp
+	
 
 	mov rax, r14			;moves r14 (counter) into rax to return to the main.c program
 	
