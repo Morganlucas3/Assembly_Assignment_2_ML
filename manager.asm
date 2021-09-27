@@ -283,7 +283,7 @@ manager:
 	syscall
 	
 	
-	mov rbp, rsp
+	mov rsp, rbp
 	pop r14
 	pop r13
 	pop r12
