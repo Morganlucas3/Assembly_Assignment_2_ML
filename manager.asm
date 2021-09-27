@@ -286,6 +286,7 @@ manager:
 	mov rdx, RETURNED_MEAN_LEN
 	syscall
 	
+	mov rax, r14			;moves r14 (counter) into rax to return to the main.c program
 	
 	mov rsp, rbp
 	pop r15
@@ -296,7 +297,7 @@ manager:
 	pop rbp
 	
 
-	mov rax, r14			;moves r14 (counter) into rax to return to the main.c program
+	
 	
 	ret
 
