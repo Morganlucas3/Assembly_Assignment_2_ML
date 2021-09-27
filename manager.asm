@@ -264,12 +264,12 @@ manager:
 	 mov rdi, r11
 	 call libPuhfessorP_printSignedInteger64
 	 
-	 cqo 			; convert rax to rdx:rax
+	 ;cqo 			; convert rax to rdx:rax
 	 
-	 idiv r14		; divide rdx:rax by r14
+	 ;idiv r14		; divide rdx:rax by r14
 	 
-	 mov rdi, rax		; moves actual integer into rdi
-	 call libPuhfessorP_printSignedInteger64 ; prints integer
+	 ;mov rdi, rax		; moves actual integer into rdi
+	 ;call libPuhfessorP_printSignedInteger64 ; prints integer
 	 
 
 	
