@@ -24,7 +24,7 @@ void reverse(signed long* a, long b){
 	//}
 	
 	for(int i = 0; i < b; i++){
-	temp = a*;
+	temp = *a;
 	v.push_back(temp);
 	a++;
 	}
