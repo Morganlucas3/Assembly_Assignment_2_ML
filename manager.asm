@@ -61,6 +61,9 @@ THEIR_MEAN_IS_LEN	equ		$-THEIR_MEAN_IS
 RETURNED_MEAN		db		"The mean will now be returned to the main function.",13,10
 RETURNED_MEAN_LEN	equ		$-RETURNED_MEAN
 
+;space + newline
+SPACE_NEWLINE		db		" ",13,10
+SPACE_NEWLINE_LEN	equ		$-SPACE_NEWLINE
 
 ;;;;;;;;;;;;;;;;;;;;;;;;
 ;BEGIN THE TEXT SECTION
@@ -160,6 +163,14 @@ manager:
 	mov rdi, FD_STDOUT			
 	mov rsi, YOU_ENTERED	
 	mov rdx, YOU_ENTERED_LEN
+	syscall
+	
+; space and newline
+	
+	mov rax, SYS_WRITE			
+	mov rdi, FD_STDOUT			
+	mov rsi, SPACE_NEWLINE	
+	mov rdx, SPACE_NEWLINE_LEN
 	syscall
 
 ; print user input
