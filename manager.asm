@@ -212,6 +212,14 @@ manager:
 	mov rsi, YOURE_DONE	
 	mov rdx, YOURE_DONE_LEN
 	syscall
+
+; space and newline
+	
+	mov rax, SYS_WRITE			
+	mov rdi, FD_STDOUT			
+	mov rsi, SPACE_NEWLINE	
+	mov rdx, SPACE_NEWLINE_LEN
+	syscall
  
  ;;;;;;;
  ;"These numbers were received and placed into the array"
