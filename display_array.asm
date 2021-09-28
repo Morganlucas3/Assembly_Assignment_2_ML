@@ -25,6 +25,11 @@ FD_STDOUT			equ		1
 SPACE_COMMA			db		", "
 SPACE_COMMA_LEN		equ		$-SPACE_COMMA
 
+;space and new line
+
+NEW_LINE			db		" ",13,10
+NEW_LINE_LEN			equ		$-NEW_LINE
+
 ;;;;;;;;;;;;;;;;;;;;;;;;
 ;BEGIN THE TEXT SECTION
 ;;;;;;;;;;;;;;;;;;;;;;;;
@@ -54,6 +59,14 @@ lea rbx, [r12 + (r14 * 8) - 1]
 display_array_print_loop:
 
 	cmp r15, rbx					; compares our running pointer with the pointer to the last int 
+	
+	;new line
+	mov rax, SYS_WRITE
+	mov rdi, FD_STDOUT
+	mov rsi, NEW_LINE
+	mov rdx, NEW_LINE_LEN
+	syscall
+	
 	jge display_array_done				; finish printing once the running ptr is greater than the last int
 	
 	mov rdi, [r15]					; [r15] grabs the value of where its currently pointing
