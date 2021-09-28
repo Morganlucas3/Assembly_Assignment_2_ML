@@ -333,6 +333,14 @@ manager:
 	mov rdx, RETURNED_MEAN_LEN
 	syscall
 	
+; space and newline
+	
+	mov rax, SYS_WRITE			
+	mov rdi, FD_STDOUT			
+	mov rsi, SPACE_NEWLINE	
+	mov rdx, SPACE_NEWLINE_LEN
+	syscall
+	
 	mov rax, r14			;moves r14 (counter) into rax to return to the main.c program
 	
 	mov rsp, rbp
