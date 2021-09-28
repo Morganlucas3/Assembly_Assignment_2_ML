@@ -315,8 +315,13 @@ manager:
 	mov rdi, rax		; moves actual integer into rdi
 	call libPuhfessorP_printSignedInteger64 ; prints integer
 	 
-
+; space and newline
 	
+	mov rax, SYS_WRITE			
+	mov rdi, FD_STDOUT			
+	mov rsi, SPACE_NEWLINE	
+	mov rdx, SPACE_NEWLINE_LEN
+	syscall
 
 
 
