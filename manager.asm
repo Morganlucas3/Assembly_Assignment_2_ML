@@ -341,7 +341,7 @@ manager:
 	mov rdx, SPACE_NEWLINE_LEN
 	syscall
 	
-	mov rax, r15			;moves r14 (counter) into rax to return to the main.c program
+	mov rax, rdi		;moves r14 (counter) into rax to return to the main.c program
 	
 	mov rsp, rbp
 	pop r15
