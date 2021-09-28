@@ -311,6 +311,8 @@ manager:
 	cqo 			; convert rax to rdx:rax
 	 
 	idiv r14		; divide rdx:rax by r14
+	
+	mov r15, rax
 	 
 	mov rdi, rax		; moves actual integer into rdi
 	call libPuhfessorP_printSignedInteger64 ; prints integer
@@ -341,7 +343,7 @@ manager:
 	mov rdx, SPACE_NEWLINE_LEN
 	syscall
 	
-	mov rax, rdi		;moves r14 (counter) into rax to return to the main.c program
+	mov rax, r15		;moves r14 (counter) into rax to return to the main.c program
 	
 	mov rsp, rbp
 	pop r15
