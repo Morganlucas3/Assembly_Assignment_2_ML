@@ -165,6 +165,12 @@ manager:
 	mov rdx, YOU_ENTERED_LEN
 	syscall
 	
+
+; print user input
+
+	mov rdi, [ENTERED_INT]
+	call libPuhfessorP_printSignedInteger64
+	
 ; space and newline
 	
 	mov rax, SYS_WRITE			
@@ -172,12 +178,6 @@ manager:
 	mov rsi, SPACE_NEWLINE	
 	mov rdx, SPACE_NEWLINE_LEN
 	syscall
-
-; print user input
-
-	mov rdi, [ENTERED_INT]
-	call libPuhfessorP_printSignedInteger64
-	
 	
 ; fill array with user input
 
