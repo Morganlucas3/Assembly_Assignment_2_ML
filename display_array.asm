@@ -58,13 +58,16 @@ lea rbx, [r12 + (r14 * 8) - 1]
 
 display_array_print_loop:
 
-	cmp r15, rbx					; compares our running pointer with the pointer to the last int 
-	jge display_array_done				; finish printing once the running ptr is greater than the last int
+	;cmp r15, rbx					; compares our running pointer with the pointer to the last int 
+	;jge display_array_done				; finish printing once the running ptr is greater than the last int
 	
 	mov rdi, [r15]					; [r15] grabs the value of where its currently pointing
 							; mov the value into rdi so we can print
 							
 	call libPuhfessorP_printSignedInteger64	; print the value 
+	
+	cmp r15, rbx					; compares our running pointer with the pointer to the last int 
+	jge display_array_done				; finish printing once the running ptr is greater than the last int
 	
 	;space and comma
 	mov rax, SYS_WRITE
