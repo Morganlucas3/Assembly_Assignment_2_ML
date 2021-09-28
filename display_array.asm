@@ -63,15 +63,14 @@ display_array_print_loop:
 	
 	mov rdi, [r15]					; [r15] grabs the value of where its currently pointing
 							; mov the value into rdi so we can print
-							
-	call libPuhfessorP_printSignedInteger64	; print the value 
-	
 	;space and comma
 	mov rax, SYS_WRITE
 	mov rdi, FD_STDOUT
 	mov rsi, SPACE_COMMA
 	mov rdx, SPACE_COMMA_LEN
 	syscall
+							
+	call libPuhfessorP_printSignedInteger64	; print the value 
 	
 	
 	;now we need to move the position of r15 and repeat
