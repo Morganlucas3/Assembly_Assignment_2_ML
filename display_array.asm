@@ -19,9 +19,11 @@ SYS_WRITE			equ		1
 FD_STDIN			equ		0
 FD_STDOUT			equ		1
 
-;;; new line
-CRLF						db		13,10
-CRLF_LEN					equ		$-CRLF
+;;;;;;;;
+; Space and comma
+
+SPACE_COMMA			db		", "
+SPACE_COMMA_LEN		equ		$-SPACE_COMMA
 
 ;;;;;;;;;;;;;;;;;;;;;;;;
 ;BEGIN THE TEXT SECTION
@@ -58,7 +60,14 @@ display_array_print_loop:
 							; mov the value into rdi so we can print
 							
 	call libPuhfessorP_printSignedInteger64	; print the value 
-	call display_array_crlf
+	
+	;space and comma
+	mov rax, SYS_WRITE
+	mov rdi, FD_STDOUT
+	mov rsi, SPACE_COMMA
+	mov rdx, SPACE_COMMA_LEN
+	syscall
+	
 	
 	;now we need to move the position of r15 and repeat
 	
@@ -76,17 +85,6 @@ display_array_done:
 	
 	ret	
 
-
-display_array_crlf:
-	
-	mov rax, SYS_WRITE
-	mov rdi, FD_STDOUT
-	mov rsi, CRLF
-	mov rdx, CRLF_LEN
-	syscall
-
-
-	ret
 
 
 
