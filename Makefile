@@ -24,9 +24,9 @@ default: build
 
 #
 run: build
-     @echo
-     @echo "Running: $(BIN)"
-     $(BIN)
+	@echo
+	@echo "Running: $(BIN)"
+	$(BIN)
 
 	
 
