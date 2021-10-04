@@ -24,8 +24,8 @@ default:	run
 
 #
 run:	build
-  	 @echo
-   	 @echo "Debugging: $(BIN)"
+  	@echo
+   	@echo "Debugging: $(BIN)"
     	gdb $(BIN) -x gdb-commands.txt
 
 	
