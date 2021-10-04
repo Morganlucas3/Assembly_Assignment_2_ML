@@ -162,7 +162,7 @@ manager:
  
  	;cmp al, 0
  	;je loop_done
- 	r9, -9223372036854775808
+ 	mov r9, -9223372036854775808
 	cmp rax, r9
  	je loop_done
  	mov [ENTERED_INT], rax
