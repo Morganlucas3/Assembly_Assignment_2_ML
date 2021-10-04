@@ -19,11 +19,11 @@ BIN := ./$(BIN_NAME)
 
 
 #
-default:	build
+default: build
 
 
 #
-run:	build
+run: build
   @echo
   @echo "Running: $(BIN)"
   $(BIN)
