@@ -154,15 +154,19 @@ manager:
 ; User input (receiving an integer)
 
 	call libPuhfessorP_inputSignedInteger64
-	mov [ENTERED_INT], rax
-	mov rdi, [ENTERED_INT]
+	;mov [ENTERED_INT], rax
+	;mov rdi, [ENTERED_INT]
 	
 	
 ; right here need to say "if not valid user input, jmp to done"
  
- 	cmp al, 0
+ 	;cmp al, 0
+ 	;je loop_done
+ 	r9, -9223372036854775808
+	cmp rax, r9
  	je loop_done
- 	
+ 	mov [ENTERED_INT], rax
+	mov rdi, [ENTERED_INT]
  
  
 ; "You entered: "
@@ -196,6 +200,8 @@ manager:
 	mov [r12 + (r14 * 8)], r13	; filling array with the user input 
 	
 	inc r14			; increase the index 
+	cmp r14, LOCAL_VARIABLE_COUNT
+	je loop_done
 	
 ;add user input for later use (calculating the mean)
 
