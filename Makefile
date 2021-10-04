@@ -19,14 +19,14 @@ BIN := ./$(BIN_NAME)
 
 
 #
-default:	run
+default:	build
 
 
 #
 run:	build
-  	@echo
-  	@echo "Debugging: $(BIN)"
-  	gdb $(BIN) -x gdb-commands.txt
+  @echo
+  @echo "Running: $(BIN)"
+  $(BIN)
 
 	
 
