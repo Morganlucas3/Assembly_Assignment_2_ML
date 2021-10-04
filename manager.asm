@@ -341,7 +341,8 @@ manager:
 	
 
 ; heres where i need to calculate the mean
-
+   	cmp r14, 0
+    	je noInput
 
 	mov rax, r15		; load numerator into rax
 	 			; r11 = sum of user input = numerator
@@ -397,7 +398,47 @@ manager:
 	
 	ret
 
+noInput:
+    mov rdi, r14
+    call libPuhfessorP_printSignedInteger64 ; prints integer
 
+; space and newline
+
+    mov rax, SYS_WRITE
+    mov rdi, FD_STDOUT
+    mov rsi, SPACE_NEWLINE
+    mov rdx, SPACE_NEWLINE_LEN
+    syscall
+
+
+
+; "The mean will no be returned to the main function."
+
+    mov rax, SYS_WRITE
+    mov rdi, FD_STDOUT
+    mov rsi, RETURNED_MEAN
+    mov rdx, RETURNED_MEAN_LEN
+    syscall
+
+; space and newline
+
+    mov rax, SYS_WRITE
+    mov rdi, FD_STDOUT
+    mov rsi, SPACE_NEWLINE
+    mov rdx, SPACE_NEWLINE_LEN
+    syscall
+
+    mov rax, r15        ;moves r14 (counter) into rax to return to the main.c program
+
+    mov rsp, rbp
+    pop r15
+    pop r14
+    pop r13
+    pop r12
+    pop rbx
+    pop rbp
+
+    ret
 
 
 
