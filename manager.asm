@@ -82,6 +82,14 @@ extern reverse
 global manager
 manager:
 
+; space and newline
+	
+	mov rax, SYS_WRITE			
+	mov rdi, FD_STDOUT			
+	mov rsi, SPACE_NEWLINE	
+	mov rdx, SPACE_NEWLINE_LEN
+	syscall
+	
 
 ;"This program will reverse your array of integers."
 
